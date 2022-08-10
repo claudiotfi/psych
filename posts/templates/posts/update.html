@@ -1,0 +1,20 @@
+{% extends 'master.html' %}
+
+{% block content %}
+<form action="/posts/update-record/{{ post.id }}" method="post" class="row">
+    {% csrf_token %}
+    <div class="col-6 mb-3">
+        <h1>{{ title }}</h1>
+    </div>
+    <div class="col-6 mb-3 text-end">
+        <button type="submit" class="btn btn-primary me-2"><i class="bi bi-save-fill"></i> Salvar</button>
+        <a href="/posts" class="btn btn-danger"><i class="bi bi-x"></i></a>
+    </div>
+    <div class="col-12 mb-3">
+        <label>Title</label>
+        <input name="title" class="form-control mb-3" value="{{ post.title }}" autofocus required>
+        <label>Text</label>
+        <textarea name="text" class="form-control mb-3" required>{{ post.text }}</textarea>
+    </div>
+</form>
+{% endblock %}
