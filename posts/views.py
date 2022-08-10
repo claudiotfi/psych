@@ -7,8 +7,7 @@ from .models import Post, Category, Tag, PostTag
 
 def index(request):
     title = 'Index of Posts'
-    posts = Post.objects.all().order_by('title').values()
-    #raise Exception(posts)
+    posts = Post.objects.all().order_by('title')
     template = loader.get_template('posts/index.html')
     context = {
         'title': title,
@@ -59,10 +58,9 @@ def delete(request, id):
     return HttpResponseRedirect(reverse('index'))
 
 # Categories
-
 def categories(request):
     title = 'Index of Categories'
-    categories = Category.objects.all().order_by('name').values()
+    categories = Category.objects.all().order_by('name')
     template = loader.get_template('categories/index.html')
     context = {
         'title': title,
